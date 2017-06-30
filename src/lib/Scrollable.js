@@ -1,5 +1,5 @@
 import React from 'react'
-import { isEqual } from './helpers'
+import { isEqual, debounce } from './helpers'
 
 export default class Scrollable extends React.Component {
   componentWillReceiveProps = n => {
@@ -17,11 +17,13 @@ export default class Scrollable extends React.Component {
   }
 
   handleScroll = e => {
-    const { onScroll, customOnScroll } = this.props
-    onScroll(this.e.scrollTop)
+    const { customOnScroll } = this.props
     if (customOnScroll) customOnScroll(e)
+    this.propagateScroll(e)
   }
-
+  propagateScroll = debounce(() => {
+    this.props.onScroll(this.e.scrollTop)
+  })
   render() {
     const { children, height, className } = this.props
     return (

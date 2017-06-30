@@ -1,6 +1,6 @@
 {
   "name": "react-motion-scroll",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Smooth scroll as a react-motion plugin",
   "main": "./dist/react-motion-scroll.min.js",
   "scripts": {

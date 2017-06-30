@@ -6,3 +6,12 @@ export const isEqual = (a, b) => {
     return false
   }
 }
+
+export const debounce = (f, t = 300) => {
+  let timeout = null
+
+  return (...arg) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => f(...arg), t)
+  }
+}

@@ -32,6 +32,7 @@ export default class Scrollable extends React.Component {
           height: height || '100%',
           overflow: 'scroll',
           position: 'relative',
+          WebkitOverflowScrolling: 'touch',
         }}
         ref={e => this.e = e}
         onScroll={this.handleScroll}

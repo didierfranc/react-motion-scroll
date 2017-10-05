@@ -1,6 +1,6 @@
 {
   "name": "react-motion-scroll",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Smooth scroll as a react-motion plugin",
   "main": "./dist/react-motion-scroll.min.js",
   "scripts": {
@@ -25,8 +25,8 @@
   },
   "homepage": "https://github.com/didierfranc/react-motion-scroll#readme",
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-motion": "^0.5.0"
   },
   "devDependencies": {

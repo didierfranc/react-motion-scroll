@@ -17,7 +17,11 @@ export default class MotionScroll extends React.Component {
     if (this.state.scroll !== to) {
       if (typeof to === 'number') this.fire(to)
       if (typeof to === 'string') {
-        this.fire(document.getElementById(to).offsetTop)
+        if (this.props.horizontal) {
+          this.fire(document.getElementById(to).offsetLeft)
+        } else {
+          this.fire(document.getElementById(to).offsetTop)
+        }
       }
     }
   }
@@ -28,7 +32,7 @@ export default class MotionScroll extends React.Component {
 
   render() {
     const { scrollTo, props, state } = this
-    const { children, height, className, onScroll, config } = props
+    const { children, height, className, onScroll, horizontal, config } = props
     const { scroll, fire } = state
     return (
       <Motion
@@ -45,6 +49,7 @@ export default class MotionScroll extends React.Component {
           height={height}
           disable={this.state.fire}
           scrollTop={m.x}
+          horizontal={horizontal}
           onScroll={this.set('scroll')}
           children={React.cloneElement(children, { scrollTo })}
         />}

@@ -3,8 +3,13 @@ import { isEqual, debounce } from './helpers'
 
 export default class Scrollable extends React.Component {
   componentWillReceiveProps = n => {
+
     if (n.scrollTop !== this.props.scrollTop) {
-      this.e.scrollTop = n.scrollTop
+      if (this.props.horizontal) {
+        this.e.scrollLeft = n.scrollTop
+      } else {
+        this.e.scrollTop = n.scrollTop
+      }
     }
     if (n.disable !== this.props.disable) {
       if (n.disable) this.e.style.pointerEvents = 'none'
@@ -22,10 +27,15 @@ export default class Scrollable extends React.Component {
     this.propagateScroll(e)
   }
   propagateScroll = debounce(() => {
-    this.props.onScroll(this.e.scrollTop)
+
+    if (this.props.horizontal) {
+      this.props.onScroll(this.e.scrollLeft);
+    } else {
+      this.props.onScroll(this.e.scrollTop);
+    }
   })
   render() {
-    const { children, height, className } = this.props
+    const { children, height, className, horizontal } = this.props
     return (
       <div
         style={{

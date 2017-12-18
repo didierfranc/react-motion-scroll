@@ -22,7 +22,7 @@ export default class Scrollable extends React.Component {
     this.propagateScroll(e)
   }
   propagateScroll = debounce(() => {
-    this.props.onScroll(this.e.scrollTop)
+    if (this.e) this.props.onScroll(this.e.scrollTop)
   })
   render() {
     const { children, height, className } = this.props
